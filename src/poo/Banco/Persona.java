@@ -1,8 +1,8 @@
 package poo.Banco;
 
-public class Persona {
-    protected String Nombre;
-    protected String DNI;
+public abstract class Persona {
+    private String Nombre;
+    private String DNI;
 
     //region Constructores
     public Persona(String nombre,String dni){

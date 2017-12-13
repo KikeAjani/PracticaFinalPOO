@@ -1,11 +1,16 @@
 package poo.General;
 
+
+import com.sun.xml.internal.ws.api.model.ExceptionType;
+import poo.Banco.Banco;
+import poo.Banco.Cliente;
+
 public class InterfazDeUsuario {
 
 
-    public InterfazDeUsuario(){}
 
-    public void Menu(){
+
+    public static void Menu(){
         System.out.println("--------MENÚ DE OPERACIONES--------");
         System.out.println("0.- Salir");
         System.out.println("----------------- ESTADO ------------------");
@@ -34,9 +39,15 @@ public class InterfazDeUsuario {
 
     }
 
-    public void Elegir (){
+    public static int Elegir () {
+        System.out.println("Introduzca la acción que desea realizar:");
         Escaner escaner = new Escaner();
-        int elec= escaner.leeEntero();
+        int elec = escaner.leeEntero();
+        return elec;
+    }
+
+
+        /* if ((elec<0)||(elec>18));
 
         switch (elec) {
             case 1:
@@ -45,8 +56,13 @@ public class InterfazDeUsuario {
             case 2:
                 System.out.println("Ha elegido la opcion 2");
                 break;
-        }
-    }
+            case 3:
+                Cliente c = new Cliente("Oscar","123456789",100000);
+                System.out.println(c);
+                Banco.AñadirCliente(c);
+
+
+        }*/
 }
 
 
