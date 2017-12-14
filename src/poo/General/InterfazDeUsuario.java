@@ -42,7 +42,7 @@ public class InterfazDeUsuario {
     public static int Elegir () {
         System.out.println("Introduzca la acción que desea realizar:");
         Escaner escaner = new Escaner();
-        int elec = escaner.leeEntero();
+        int elec = escaner.leeInt();
         return elec;
     }
 

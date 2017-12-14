@@ -2,20 +2,20 @@ package poo.Bolsa;
 
 import poo.General.Escaner;
 import poo.General.Utilidades;
-
-import javax.swing.text.html.HTMLDocument;
 import java.util.HashMap;
 import java.util.InputMismatchException;
 import java.util.Iterator;
 import java.util.Map;
 
 public class BolsaDeValores {
-    private final static String Nombre = "LaBolsa";
-    private static HashMap<String, Empresa> ListaEmpresas= new HashMap<>();
+    private final static String NOMBRE = "LaBolsa";
+    private static Map<String, Empresa> listaEmpresas = new HashMap<>();
 
+
+    //Métodos públicos
 
     public static void ImprimirEmpresas(){
-        Iterator it=ListaEmpresas.entrySet().iterator();
+        Iterator it= listaEmpresas.entrySet().iterator();
         while(it.hasNext()){
             Map.Entry e=(Map.Entry)it.next();
             System.out.println(e.getValue());
@@ -25,9 +25,9 @@ public class BolsaDeValores {
     public static void EliminarEmpresa() {
         System.out.println("Introduzca el nombre de la empresa a eliminar:");
         Escaner escaner = new Escaner();
-        String nombre = escaner.leeDNI();
-        if (ListaEmpresas.containsKey(nombre)) {
-            ListaEmpresas.remove(nombre);
+        String nombre = escaner.leeCadena();
+        if (listaEmpresas.containsKey(nombre)) {
+            listaEmpresas.remove(nombre);
         } else {
             System.out.println("Esta empresa no existe.");
 
@@ -38,7 +38,7 @@ public class BolsaDeValores {
         double Temp;
         double RandomTemp;
         Empresa EmpresaTemporal;
-        Iterator it=ListaEmpresas.entrySet().iterator();
+        Iterator it= listaEmpresas.entrySet().iterator();
 
         while(it.hasNext()){
             Map.Entry e=(Map.Entry)it.next();
@@ -47,16 +47,12 @@ public class BolsaDeValores {
             RandomTemp= Utilidades.getRandomInt();
             EmpresaTemporal.setValorAccionActual(RandomTemp);
             EmpresaTemporal.setIncremento((double)((int)((((RandomTemp-Temp) / Temp)*100)*100)/100.0));
-
-
-
-
             }
     }
 
 
     public static void AñadirEmpresa(Empresa empresa){
-        ListaEmpresas.put(empresa.getNombre(),empresa);
+        listaEmpresas.put(empresa.getNombre(),empresa);
     }
 
 
@@ -65,14 +61,14 @@ public class BolsaDeValores {
             Escaner escaner= new Escaner();
             System.out.println("Introduzca el nombre de la empresa:");
             String nombre=escaner.leeCadena();
-            if (ListaEmpresas.containsKey(nombre)){
+            if (listaEmpresas.containsKey(nombre)){
                 System.out.println("Esta empresa ya está registrada en la bolsa");
             }else {
                 System.out.println("Introduzca el valor de la empresa:");
                 try {
                     double valor = escaner.leeReal();
                     Empresa empresa = new Empresa(nombre, valor);
-                    ListaEmpresas.put(nombre, empresa);
+                    listaEmpresas.put(nombre, empresa);
                     System.out.println("Empresa añadida");
                 }catch (InputMismatchException e){
                     System.out.println("Error, operación cancelada. Vuelvalo a intentar");

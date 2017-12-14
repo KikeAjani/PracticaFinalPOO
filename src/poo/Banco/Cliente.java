@@ -1,11 +1,11 @@
 package poo.Banco;
 
 import java.util.ArrayList;
-import java.util.InputMismatchException;
+import java.util.List;
 
 public class Cliente extends Persona implements Cloneable {
-    protected double Saldo;
-    protected ArrayList<PaqueteDeAcciones> Cartera;
+    private double saldo;
+    private List<PaqueteDeAcciones> cartera;
 
     //region CONSTRUCTORES
 
@@ -14,20 +14,20 @@ public class Cliente extends Persona implements Cloneable {
 
     public Cliente(String nombre,String dni,double saldo){
         super(nombre, dni);
-        this.Saldo = saldo;
-        this.Cartera= new ArrayList<PaqueteDeAcciones> ();
+        this.saldo = saldo;
+        this.cartera= new ArrayList<PaqueteDeAcciones> ();
     }
 
     //endregion
 
     //region Get&Set
 
-    public ArrayList<PaqueteDeAcciones> getCartera() {
-        return Cartera;
+    public List<PaqueteDeAcciones> getCartera() {
+        return cartera;
     }
 
     public double getSaldo() {
-        return Saldo;
+        return saldo;
     }
 
     @Override
@@ -37,7 +37,7 @@ public class Cliente extends Persona implements Cloneable {
 
     public String  imprimirPaquetes(){
         String paquetes="";
-        for(PaqueteDeAcciones e: Cartera){
+        for(PaqueteDeAcciones e: cartera){
             paquetes+= e.toString();
         }
         return paquetes;
@@ -47,7 +47,7 @@ public class Cliente extends Persona implements Cloneable {
 
 
     public void añadirPaquete(PaqueteDeAcciones paqueteDeAcciones){
-        this.Cartera.add(paqueteDeAcciones);
+        this.cartera.add(paqueteDeAcciones);
 
     }
     @Override

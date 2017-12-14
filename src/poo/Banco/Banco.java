@@ -6,12 +6,12 @@ import java.util.*;
 
 public class Banco {
 
-    private static HashMap<String,Cliente> ListaClientes= new HashMap<String, Cliente>();
+    private static Map<String,Cliente> listaClientes = new HashMap<String, Cliente>() ;
 
 
 
     public static void AñadirCliente(Cliente cliente){
-        ListaClientes.put(cliente.getDNI(),cliente);
+        listaClientes.put(cliente.getDNI(),cliente);
     }
 
     public static void AñadirCliente()  {
@@ -20,39 +20,37 @@ public class Banco {
         System.out.println("Introduzca el nombre del cliente:");
         String nombre=escaner.leeCadena();
         while (dni.length()!=9) {
-        System.out.println("Introduzca el DNI:");
-        dni = escaner.leeDNI();
-        if (dni.length()!=9) {
-        System.out.println("DNI no tiene 9 caracteres");
-        } }
-        System.out.println("Introduzca el saldo inicial:");
-        //esto esta bien? meter el codigo dentro del try (entero)
-        try{
+            System.out.println("Introduzca el DNI:");
+            dni = escaner.leeCadena();
+            if (dni.length()!=9) {
+                System.out.println("DNI no tiene 9 caracteres");
+            }
+        }if (!listaClientes.containsKey(dni)) {
+            System.out.println("Introduzca el saldo inicial:");
             double saldo = escaner.leeReal();
-            Cliente cliente= new Cliente(nombre,dni,saldo);
-            ListaClientes.put(dni,cliente);
+            Cliente cliente = new Cliente(nombre, dni, saldo);
+            listaClientes.put(dni, cliente);
             System.out.println("Cliente añadido");
-        }catch (InputMismatchException e){
-            System.out.println("Error, operación cancelada");
-            AñadirCliente();
-
+        }else{
+            System.out.println("Este cliente ya existe");
         }
     }
 
+
     public static void  Borrar(){
-        ListaClientes.clear();
+        listaClientes.clear();
 
     }
 
     public static void ImprimirUn(String dni){
-        Cliente texto=(Cliente)ListaClientes.get(dni);
+        Cliente texto=(Cliente) listaClientes.get(dni);
         System.out.println(texto);
     }
 
 
 
     public static void ImprimirClientes(){
-        Collection<Cliente> ColeccionClientes= ListaClientes.values();
+        Collection<Cliente> ColeccionClientes= listaClientes.values();
         Iterator it=ColeccionClientes.iterator();
         while(it.hasNext()){
             Cliente texto= (Cliente)it.next();
@@ -61,7 +59,7 @@ public class Banco {
     }
 
     public static void ImprimirClientes2(){
-        Iterator it=ListaClientes.entrySet().iterator();
+        Iterator it= listaClientes.entrySet().iterator();
 
         while(it.hasNext()){
             Map.Entry e=(Map.Entry)it.next();
@@ -73,9 +71,9 @@ public class Banco {
     public static void EliminarCliente(){
         System.out.println("Introduzca el DNI del cliente a eliminar");
         Escaner escaner = new Escaner();
-        String dni = escaner.leeDNI();
-        if (ListaClientes.containsKey(dni)){
-          ListaClientes.remove(dni);
+        String dni = escaner.leeCadena();
+        if (listaClientes.containsKey(dni)){
+          listaClientes.remove(dni);
         }else{
             System.out.println("Este cliente no existe.");
 
@@ -88,22 +86,19 @@ public class Banco {
         String dniGestor="";
         System.out.println("Introduzca el DNI del cliente que desea hacer premium");
         Escaner escaner = new Escaner();
-        String dni = escaner.leeDNI();
-        if (ListaClientes.containsKey(dni)){
+        String dni = escaner.leeCadena();
+        if (listaClientes.containsKey(dni)){
             System.out.println("Introduzca el nombre del gestor que se le va asignar:");
             String gestor = escaner.leeCadena();
             while (dniGestor.length()!=9) {
                 System.out.println("Introduzca el DNI del gestor:");
-                dniGestor = escaner.leeDNI();
+                dniGestor = escaner.leeCadena();
                 if (dniGestor.length()!=9) {
                     System.out.println("DNI no tiene 9 caracteres");
                 } }
-            Cliente cliente=ListaClientes.get(dni);
-
+            Cliente cliente= listaClientes.get(dni);
             ClientePremium clientePremium = new ClientePremium(cliente,new GestorDeInversiones(gestor,dniGestor) );
-
-            ListaClientes.remove(dni);
-            ListaClientes.put(clientePremium.getDNI(),clientePremium);
+            listaClientes.put(clientePremium.getDNI(),clientePremium);
             System.out.println("El cliente con DNI :" +dni +" ha sido añadido.");
 
         }else{
@@ -119,13 +114,13 @@ public class Banco {
         String dni = escaner.leeDNI();
         Cliente cliente = new Cliente();
 
-        for (Cliente cliente1 : ListaClientes) {
+        for (Cliente cliente1 : listaClientes) {
             if (cliente1.getDNI().equals(dni)) {
                 cliente=cliente1;
             }
         }
         System.out.println("Eliminando a "+cliente.getNombre());
-        ListaClientes.remove(cliente);
+        listaClientes.remove(cliente);
     }
 
 */

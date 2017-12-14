@@ -1,21 +1,21 @@
 package poo.Banco;
 
 public class PaqueteDeAcciones {
-    private String NombreEmpresa;
+    private String nombreEmpresa;
     private int nTitulos;
-    private double PrecioTotal;
-    private double PrecioInicial;
+    private double precioTotal;
+    private double precioInicial;
 
     public PaqueteDeAcciones(String nombreEmpresa,int nTitulos,double precioInicial){
-        this.NombreEmpresa=nombreEmpresa;
+        this.nombreEmpresa =nombreEmpresa;
         this.nTitulos=nTitulos;
-        this.PrecioInicial=precioInicial;
-        this.PrecioTotal=precioInicial;
+        this.precioInicial =precioInicial;
+        this.precioTotal =precioInicial;
     }
 
     @Override
     public String toString(){
-        return "\nNombre de la empresa: "+ NombreEmpresa+ "\nNumero de aciones: "+nTitulos+"\nPrecio actual: "+PrecioTotal+"\nSu precio inicial fue: "+PrecioInicial +"\n";
+        return "\nNombre de la empresa: "+ nombreEmpresa + "\nNumero de aciones: "+nTitulos+"\nPrecio actual: "+ precioTotal +"\nSu precio inicial fue: "+ precioInicial +"\n";
     }
 
 }

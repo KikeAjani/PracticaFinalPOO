@@ -1,13 +1,13 @@
 package poo.Banco;
 
 public abstract class Persona {
-    private String Nombre;
-    private String DNI;
+    private String nombre;
+    private String dni;
 
     //region Constructores
     public Persona(String nombre,String dni){
-        this.Nombre=nombre;
-        this.DNI=dni;
+        this.nombre =nombre;
+        this.dni=dni;
     }
 
     public Persona(){};
@@ -17,11 +17,11 @@ public abstract class Persona {
     //region Get&Set
 
     public String getDNI() {
-        return DNI;
+        return dni;
     }
 
     public String getNombre() {
-        return Nombre;
+        return nombre;
     }
     //endregion
 

@@ -1,42 +1,42 @@
 package poo.Bolsa;
 
 public class Empresa {
-    private String Nombre;
-    private double ValorAccionActual;
-    private double ValorAccionPrevio;
-    private double Incremento;
+    private String nombre;
+    private double valorAccionActual;
+    private double valorAccionPrevio;
+    private double incremento;
 
 
     public Empresa(String nombre,double valor){
-        this.Nombre=nombre;
-        this.ValorAccionActual=valor;
-        this.ValorAccionPrevio=valor;
-        this.Incremento=0;
+        this.nombre =nombre;
+        this.valorAccionActual =valor;
+        this.valorAccionPrevio =valor;
+        this.incremento =0;
     }
 
 
     public String getNombre() {
-        return Nombre;
+        return nombre;
     }
 
     public double getIncremento() {
-        return Incremento;
+        return incremento;
     }
 
     public void setValorAccionActual(double valorAccionActual) {
-        this.ValorAccionActual = valorAccionActual;
+        this.valorAccionActual = valorAccionActual;
     }
 
     public void setValorAccionPrevio(double valorAccionPrevio) {
-        this.ValorAccionPrevio = valorAccionPrevio;
+        this.valorAccionPrevio = valorAccionPrevio;
     }
 
     public void setIncremento(double incremento){
-        this.Incremento=incremento;
+        this.incremento =incremento;
     }
 
     public double getValorAccionActual(){
-        return this.ValorAccionActual;
+        return this.valorAccionActual;
     }
 
 
@@ -44,8 +44,8 @@ public class Empresa {
 
 
     public String toString() {
-        return "\nNombre de empresa: "+ Nombre + "\nValor actual: "+ValorAccionActual+ "\nValor previo: "+ValorAccionPrevio
-                + "\nValor del último incremento: " + Incremento +"%\n";
+        return "\nnombre de empresa: "+ nombre + "\nValor actual: "+ valorAccionActual + "\nValor previo: "+ valorAccionPrevio
+                + "\nValor del último incremento: " + incremento +"%\n";
     }
 }
 

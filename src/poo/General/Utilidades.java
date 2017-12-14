@@ -4,7 +4,6 @@ import java.util.Random;
 
 public class Utilidades {
 
-
     public static double getRandomInt() {
         int limite=5000;
         Random generadorDeNumerosAleatorios = new Random();

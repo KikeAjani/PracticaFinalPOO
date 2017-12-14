@@ -1,29 +1,24 @@
 package poo.Banco;
 
-import java.util.ArrayList;
-
 public class ClientePremium extends Cliente {
-    private GestorDeInversiones Gestor;
+    private GestorDeInversiones gestor;
 
     public ClientePremium(String nombre,String dni,double saldo,GestorDeInversiones gestor){
         super(nombre, dni, saldo);
-        this.Cartera= new ArrayList<PaqueteDeAcciones>();
-        this.Gestor=gestor;
+        this.gestor =gestor;
     }
 
     public ClientePremium(Cliente cliente,GestorDeInversiones gestor){
-        super(cliente.getNombre(),cliente.getDNI(),cliente.getSaldo());
-        this.Cartera=cliente.getCartera();
-        this.Gestor=gestor;
+        this(cliente.getNombre(),cliente.getDNI(),cliente.getSaldo(),gestor);
     }
 
     public GestorDeInversiones getGestor(){
-        return Gestor;
+        return gestor;
     }
 
     public String toString() {
         return "\nPREMIUM Nombre: " + getNombre() +" DNI: " + getDNI() +" Saldo: "+ getSaldo() + "\n------------Paquete de acciones:-----------" + imprimirPaquetes()
-                +"\nSu gestor de inversiones es: " + Gestor  ;
+                +"\nSu gestor de inversiones es: " + gestor;
 
 
     }
